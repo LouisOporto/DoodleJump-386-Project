@@ -29,6 +29,7 @@ class Game:
 
         while not finished:
             self.screen.fill(self.settings.background_color)
+            self.updateEvent()
             pg.display.flip()
             time.sleep(0.02)
 
