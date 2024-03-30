@@ -4,13 +4,14 @@ Doodle Jump Clone made in PyGame
 
 # Modules
 
-Game
-Player
-Settings
-Scoreboard
-Timer
-Sound
-platforms
-dogs
-vectors
-laser
+game.py
+player.py
+settings.py
+scoreboard.py
+timer.py
+sound.py
+platforms.py
+dogs.py
+vectors.py
+laser.py 
+
