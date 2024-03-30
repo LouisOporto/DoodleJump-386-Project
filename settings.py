@@ -1,13 +1,13 @@
 class Settings:
     def __init__(self):
-        self.screen_width = 500
-        self.screen_height = 500
+        self.screen_width = 700
+        self.screen_height = 700
         self.background_color = (10, 10, 30)
 
         self.platform_spawn_rate = 30
         
         self.gravity = 10
-        self.player_speed = 5
+        self.player_speed = 10
 
         self.initialize_dynamic_settings()
     

@@ -3,6 +3,8 @@ import pygame as pg
 from timer import Timer
 
 class Dogs:
+    dog_jump_images = (pg.image.load(f'images/dog_{n}.png') for n in range (3))
+
     def __init__(self, game):
         self.game = game
         # TODO Make a class that manage all dogs

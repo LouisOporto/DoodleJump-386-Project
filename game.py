@@ -1,6 +1,7 @@
 import time, sys
 import pygame as pg
 from settings import Settings
+from player import Player
 from pygame.locals import *
 
 
@@ -12,16 +13,25 @@ class Game:
         self.screen = pg.display.set_mode((self.settings.screen_width, self.settings.screen_height),0, 32)
         pg.display.set_caption("Doodle Jump")
 
+        self.player = Player(self)
+
+
     def checkEvent(self):
         for event in pg.event.get():
-            if event.type == QUIT:
+            if event.type == pg.QUIT:
                 pg.quit()
                 sys.exit()
             # TODO - Player input and other keyboard functions
-            if event.type == KEYDOWN:
-                pass
-            if event.type == KEYUP:
-                pass
+            elif event.type == pg.KEYDOWN:
+                if event.key == pg.K_RIGHT:
+                    self.player.moving_right = True
+                elif event.key == pg.K_LEFT:
+                    self.player.moving_left = True
+            elif event.type == pg.KEYUP:
+                if event.key == pg.K_RIGHT:
+                    self.player.moving_right = False
+                elif event.key == pg.K_LEFT:
+                    self.player.moving_left = False
             
 
     def play(self):
@@ -29,7 +39,9 @@ class Game:
 
         while not finished:
             self.screen.fill(self.settings.background_color)
+            self.player.draw()
             self.checkEvent()
+            self.player.update()
             pg.display.flip()
             time.sleep(0.02)
 
