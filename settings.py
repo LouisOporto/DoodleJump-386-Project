@@ -9,6 +9,11 @@ class Settings:
         self.gravity = 10
         self.player_speed = 10
 
+        self.laser_speed = 2.0
+        self.laser_width = 3
+        self.laser_height = 15
+        self.laser_color = (60, 60, 60)
+
         self.initialize_dynamic_settings()
     
     # TODO Add more dynmaic settings that would challenge the game overtime. Everytime player hits a platform the dificullty scales.
