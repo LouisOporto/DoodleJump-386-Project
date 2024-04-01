@@ -2,7 +2,7 @@ import time, sys
 import pygame as pg
 from settings import Settings
 from player import Player
-from laser import Laser
+from laser import Lasers
 from pygame.locals import *
 
 
@@ -14,8 +14,8 @@ class Game:
         self.screen = pg.display.set_mode((self.settings.screen_width, self.settings.screen_height),0, 32)
         pg.display.set_caption("Doodle Jump")
 
+        self.lasers = Lasers(dj_game=self)
         self.player = Player(self)
-        self.laser = pg.sprite.Group()
 
 
     def checkEvent(self):
@@ -38,10 +38,10 @@ class Game:
             self.player.draw()
             self.checkEvent()
             self.player.update()
-            self.laser.update()
+            self.player.jump()
+            self.lasers.update()
             pg.display.flip()
             time.sleep(0.02)
-            self.player.jump()
 
 
 if __name__ == "__main__":

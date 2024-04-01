@@ -11,7 +11,7 @@ class Settings:
         self.laser_speed = 2.0
         self.laser_width = 3
         self.laser_height = 15
-        self.laser_color = (60, 60, 60)
+        self.laser_color = (0, 255, 255)
 
         self.jumping = False
         self.gravity = 10
