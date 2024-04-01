@@ -8,10 +8,11 @@ class Settings:
 
         self.player_speed = 20
 
-        self.laser_speed = 2.0
-        self.laser_width = 3
-        self.laser_height = 15
+        self.laser_speed = 10
+        self.laser_width = 5
+        self.laser_height = 20
         self.laser_color = (0, 255, 255)
+        #self.lasers_allowed = 3               (optional) limiting the amount of lasers on screen
 
         self.jumping = False
         self.gravity = 10

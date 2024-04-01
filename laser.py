@@ -34,8 +34,9 @@ class Lasers():
         self.laser_group = pg.sprite.Group()
     
     def add(self):
-        new_laser = Laser(self.dj_game, v=Vector(0, -self.settings.laser_speed))
-        self.laser_group.add(new_laser) 
+        #if len(self.laser_group) < self.settings.lasers_allowed:                     (optional) limiting the amount of lasers on screen
+            new_laser = Laser(self.dj_game, v=Vector(0, -self.settings.laser_speed))
+            self.laser_group.add(new_laser) 
     
     def update(self):
         for laser in self.laser_group.sprites():
