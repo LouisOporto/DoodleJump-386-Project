@@ -25,24 +25,10 @@ class Game:
                 sys.exit()
             # TODO - Player input and other keyboard functions
             elif event.type == pg.KEYDOWN:
-                self.check_keydown_events(event)
+                self.player.check_keydown_events(event)
             elif event.type == pg.KEYUP:
-                self.check_keyup_events(event)
-                    
-    def check_keydown_events(self, event):
-        if event.key == pg.K_RIGHT:
-            self.player.moving_right = True
-        elif event.key == pg.K_LEFT:
-            self.player.moving_left = True
-        elif event.key == pg.K_UP:
-            self.settings.jumping = True
+                self.player.check_keyup_events(event)
 
-    def check_keyup_events(self, event):
-        if event.key == pg.K_RIGHT:
-            self.player.moving_right = False
-        elif event.key == pg.K_LEFT:
-            self.player.moving_left = False
-    
 
     def play(self):
         finished = False
@@ -56,6 +42,7 @@ class Game:
             pg.display.flip()
             time.sleep(0.02)
             self.player.jump()
+
 
 if __name__ == "__main__":
     print("Starting Doodle Jump Game")
