@@ -34,6 +34,8 @@ class Game:
             self.player.moving_right = True
         elif event.key == pg.K_LEFT:
             self.player.moving_left = True
+        elif event.key == pg.K_UP:
+            self.settings.jumping = True
 
     def check_keyup_events(self, event):
         if event.key == pg.K_RIGHT:
@@ -53,6 +55,7 @@ class Game:
             self.laser.update()
             pg.display.flip()
             time.sleep(0.02)
+            self.player.jump()
 
 if __name__ == "__main__":
     print("Starting Doodle Jump Game")

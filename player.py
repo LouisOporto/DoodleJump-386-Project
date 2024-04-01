@@ -1,5 +1,6 @@
 import pygame as pg
 from settings import Settings
+from settings import Settings
 
 class Player:
     cat_jump_images = (pg.image.load(f'images/cat_{n}.png') for n in range (3))
@@ -16,6 +17,7 @@ class Player:
         self.rect.midbottom = self.screen_rect.midbottom
 
         self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
 
         self.moving_right = False
         self.moving_left = False
@@ -27,6 +29,16 @@ class Player:
             self.x -= self.settings.player_speed
 
         self.rect.x = self.x
+        self.rect.y = self.y
+
+    def jump(self):
+        if self.settings.jumping == True:
+            self.y -= self.settings.y_velocity
+            self.settings.y_velocity -= self.settings.gravity
+
+            if self.settings.y_velocity < -self.settings.jump_height:
+                self.settings.jumping = False
+                self.settings.y_velocity = self.settings.jump_height
 
     def draw(self):
         self.screen.blit(self.image, self.rect)
