@@ -3,6 +3,7 @@ import pygame as pg
 from settings import Settings
 from player import Player
 from laser import Lasers
+from enemy import Dogs
 from pygame.locals import *
 
 
@@ -15,6 +16,7 @@ class Game:
         pg.display.set_caption("Doodle Jump")
 
         self.lasers = Lasers(dj_game=self)
+        self.dogs = Dogs(dj_game=self)
         self.player = Player(self)
 
 
@@ -23,7 +25,6 @@ class Game:
             if event.type == pg.QUIT:
                 pg.quit()
                 sys.exit()
-            # TODO - Player input and other keyboard functions
             elif event.type == pg.KEYDOWN:
                 self.player.check_keydown_events(event)
             elif event.type == pg.KEYUP:
@@ -39,6 +40,7 @@ class Game:
             self.checkEvent()
             self.player.update()
             self.player.jump()
+            self.dogs.update()
             self.lasers.update()
             pg.display.flip()
             time.sleep(0.02)
