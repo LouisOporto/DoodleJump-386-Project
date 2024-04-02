@@ -15,19 +15,19 @@ class Game:
         self.screen = pg.display.set_mode((self.settings.screen_width, self.settings.screen_height),0, 32)
         pg.display.set_caption("Doodle Jump")
 
-        self.lasers = Lasers(dj_game=self)
-        self.dogs = Dogs(dj_game=self)
+        self.lasers = Lasers(self)
+        self.dogs = Dogs(self)
         self.player = Player(self)
 
 
     def checkEvent(self):
         for event in pg.event.get():
-            if event.type == pg.QUIT:
+            if event.type == QUIT:
                 pg.quit()
                 sys.exit()
-            elif event.type == pg.KEYDOWN:
+            elif event.type == KEYDOWN:
                 self.player.check_keydown_events(event)
-            elif event.type == pg.KEYUP:
+            elif event.type == KEYUP:
                 self.player.check_keyup_events(event)
 
 
@@ -36,12 +36,11 @@ class Game:
 
         while not finished:
             self.screen.fill(self.settings.background_color)
-            self.player.draw()
             self.checkEvent()
             self.player.update()
-            self.player.jump()
             self.dogs.update()
             self.lasers.update()
+
             pg.display.flip()
             time.sleep(0.02)
 

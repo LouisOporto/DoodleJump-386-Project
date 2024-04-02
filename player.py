@@ -54,6 +54,9 @@ class Player:
         self.rect.y = self.y
 
         if self.continuous_fire: self.fire()
+        self.jump()
+        self.draw()
+
 
     def jump(self):
         if self.settings.jumping:
@@ -64,6 +67,7 @@ class Player:
                 self.image = pg.transform.scale(pg.image.load('images/cat_0.png'), (150, 150))
                 self.settings.jumping = False
                 self.settings.y_velocity = self.settings.jump_height
+
 
     def draw(self):
         self.screen.blit(self.image, self.rect)

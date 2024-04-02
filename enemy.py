@@ -5,11 +5,11 @@ from timer import Timer
 class Dog(Sprite):
     dog_jump_images = (pg.image.load(f'images/dog_{n}.png') for n in range (3))
 
-    def __init__(self, dj_game):
+    def __init__(self, game):
         super().__init__()
-        self.dj_game = dj_game
-        self.screen = dj_game.screen
-        self.settings = dj_game.settings
+        self.game = game
+        self.screen = game.screen
+        self.settings = game.settings
 
         self.image = pg.transform.scale(pg.image.load('images/dog_0.png'), (150, 130))
         self.rect = self.image.get_rect()
@@ -27,10 +27,10 @@ class Dog(Sprite):
     #TODO Implement enemy dogs
 
 class Dogs:
-    def __init__(self, dj_game):
-        self.dj_game = dj_game
-        self.screen = dj_game.screen
-        self.settings = dj_game.settings
+    def __init__(self, game):
+        self.game = game
+        self.screen = game.screen
+        self.settings = game.settings
         self.dog_group = pg.sprite.Group()
         self.create_fleet()
 
