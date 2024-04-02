@@ -4,6 +4,7 @@ from settings import Settings
 from player import Player
 from laser import Lasers
 from enemy import Dogs
+from button import Button
 from pygame.locals import *
 
 
@@ -19,6 +20,9 @@ class Game:
         self.dogs = Dogs(self)
         self.player = Player(self)
 
+        self.play_button = Button(game=self, text='Play')
+        self.game_active = False
+
 
     def checkEvent(self):
         for event in pg.event.get():
@@ -29,17 +33,31 @@ class Game:
                 self.player.check_keydown_events(event)
             elif event.type == KEYUP:
                 self.player.check_keyup_events(event)
+            elif event.type == MOUSEMOTION:
+                b = self.play_button
+                x, y = pg.mouse.get_pos()
+                b.select(b.rect.collidepoint(x, y))
+            elif event.type == MOUSEBUTTONDOWN:
+                b = self.play_button
+                x, y = pg.mouse.get_pos()
+                if b.rect.collidepoint(x, y):
+                    b.press()
 
 
+    def activate(self):
+        self.game_active = True
+        
     def play(self):
         finished = False
-
         while not finished:
             self.screen.fill(self.settings.background_color)
             self.checkEvent()
-            self.player.update()
-            self.dogs.update()
-            self.lasers.update()
+            if self.game_active:
+                self.player.update()
+                self.dogs.update()
+                self.lasers.update()
+            else:
+                self.play_button.update()
 
             pg.display.flip()
             time.sleep(0.02)
