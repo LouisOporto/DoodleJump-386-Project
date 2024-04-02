@@ -1,6 +1,5 @@
 from pygame.sprite import Sprite, Group
 import pygame as pg
-from timer import Timer
 
 class Dog(Sprite):
     dog_jump_images = (pg.image.load(f'images/dog_{n}.png') for n in range (3))
@@ -31,7 +30,7 @@ class Dogs:
         self.game = game
         self.screen = game.screen
         self.settings = game.settings
-        self.dog_group = pg.sprite.Group()
+        self.dog_group = Group()
         self.create_fleet()
 
     def create_fleet(self):

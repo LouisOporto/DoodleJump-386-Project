@@ -47,6 +47,7 @@ class Game:
     def activate(self):
         self.game_active = True
         
+        
     def play(self):
         finished = False
         while not finished:

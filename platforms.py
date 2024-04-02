@@ -9,14 +9,14 @@ class PlatformGroup:
         self.platform_group = Group()
 
     def update(self):
-        for platform in self.platform_group:
+        for platform in self.platform_group.sprites():
             platform.update()
     
     def create_platform(self):
         pass
-    
 
-class Platforms(Sprite):
+
+class Platform(Sprite):
     def __init__(self, game):
         self.game = game
         self.screen = game.screen
@@ -26,5 +26,5 @@ class Platforms(Sprite):
     def update(self):
         pass
 
-    def draw(self):
+    def add(self):
         pass

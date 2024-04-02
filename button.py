@@ -1,5 +1,4 @@
 import pygame as pg
-from settings import Settings
 
 class Button:
     def __init__(self, game, text, size=(200, 50), text_color=(255, 255, 255), bg_color=(0, 0, 255), selected_color=(0, 255, 50)):

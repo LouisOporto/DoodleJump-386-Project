@@ -1,12 +1,10 @@
 import pygame as pg
-from laser import Lasers
-from settings import Settings
 
 class Player:
-    def __init__(self, dj_game):
-        self.screen = dj_game.screen
-        self.screen_rect = dj_game.screen.get_rect()
-        self.settings = dj_game.settings
+    def __init__(self, game):
+        self.screen = game.screen
+        self.screen_rect = game.screen.get_rect()
+        self.settings = game.settings
 
         self.image = pg.transform.scale(pg.image.load('images/cat_0.png'), (150, 150))
         self.rect = self.image.get_rect()
@@ -19,7 +17,7 @@ class Player:
         self.moving_right = False
         self.moving_left = False
 
-        self.lasers = dj_game.lasers
+        self.lasers = game.lasers
         self.continuous_fire = False
 
     def check_keydown_events(self, event):
