@@ -9,7 +9,9 @@ class Sound:
         # TODO: Initialize all sounds needed in the game instance
         # sound = pg.mixer.Sound("filename.wav")
         # self.sounds = {"sound1" : sound}
-        self.sounds = {"sound1" : "add sound here"}
+
+        jump_sound = pg.mixer.Sound('sounds/jump.wav')
+        self.sounds = {'jump' : jump_sound}
 
     def play_bg(self):
         pg.mixer_music.play(-1, 0, 0)
@@ -24,8 +26,7 @@ class Sound:
 
     def bounce(self):
         # TODO Replace jump with proper sound
-        # pg.mixer.Sound.play(self.sounds["jump"])
-        pass
+        pg.mixer.Sound.play(self.sounds["jump"])
 
     def gameover(self):
         # TODO

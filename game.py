@@ -8,6 +8,7 @@ from button import Button
 from platforms import PlatformGroup
 from stats import Stats
 from scoreboard import Scoreboard
+from sound import Sound
 from pygame.locals import *
 
 
@@ -19,6 +20,7 @@ class Game:
         self.screen = pg.display.set_mode((self.settings.screen_width, self.settings.screen_height),0, 32)
         pg.display.set_caption("Doodle Jump")
 
+        self.sound = Sound(bg_music="sounds/music.wav")
         self.lasers = Lasers(self)
         self.dog_lasers = Lasers(self)
         self.stats = Stats(self)
@@ -86,6 +88,7 @@ class Game:
 
     def play(self):
         finished = False
+        self.sound.play_bg()
         while not finished:
             self.checkEvent()
             self.screen.fill(self.settings.background_color)
