@@ -21,6 +21,7 @@ class PlatformGroup:
                 self.player.jump()
                 self.create_sucession()
                 self.game.stats.score += self.settings.platform_point
+                self.sb.platformJumped()
                 self.sb.prep_score()
                 self.sb.check_high_score()
 

@@ -13,6 +13,7 @@ class Scoreboard:
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
+        self.platform = 0
 
 
     def prep_score(self):
@@ -52,8 +53,20 @@ class Scoreboard:
                 file.write(str(self.stats.high_score))
         self.prep_high_score()
 
+    def check_level(self):
+        if self.platform > self.settings.next_level:
+            self.settings.increase_dynamics()
+            self.stats.level += 1
+            self.platform = 0
+            self.prep_level()
+
+
+    def platformJumped(self):
+        self.platform += 1
+
 
     def update(self):
+        self.check_level()
         self.draw()
 
 

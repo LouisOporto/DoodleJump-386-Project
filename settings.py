@@ -22,6 +22,7 @@ class Settings:
         #Player Variables
         self.image_scale = 50
         self.player_speed = 20
+        self.dog_speed = 5
         self.gravity = 1
         self.fall_speed = 20
         self.jump_height = 25
@@ -30,14 +31,14 @@ class Settings:
     
     
     def initialize_dynamic_settings(self):
-        self.enemy_spawn_rate = 500
+        self.dog_spawn_rate = 500
         self.platform_point = 100
         self.dog_point = 250
         self.next_level = 10
 
 
     def increase_dynamics(self):
-        self.enemy_spawn_rate *= 0.9
+        self.dog_spawn_rate //= 1.1
         self.platform_point *= 1.1
         self.dog_point *= 1.1
         self.next_level += 2
