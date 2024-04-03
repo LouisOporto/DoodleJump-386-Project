@@ -73,12 +73,12 @@ class Game:
 
     def restart_game(self):
         #Resets score, player, platforms, and dogs
-        self.player.reset_player()
-        self.platforms.reset_platforms()
         self.settings.initialize_dynamic_settings()
         self.stats.reset()
         self.scoreboard.prep_score()
         self.scoreboard.prep_level()
+        self.player.reset_player()
+        self.platforms.reset_platforms()
         self.dogs.reset_dogs()
         self.lasers.resetLasers()
         self.dog_lasers.resetLasers()

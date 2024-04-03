@@ -23,7 +23,7 @@ class Scoreboard:
         self.score_image = self.font.render(s, True, self.text_color, self.settings.background_color)
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.screen_rect.right - 20
-        self.score_rect.top += 20
+        self.score_rect.top = self.screen_rect.bottom - 150
 
 
     def prep_high_score(self):
@@ -34,7 +34,7 @@ class Scoreboard:
 
         self.high_score_rect = self.high_score_image.get_rect()
         self.high_score_rect.centerx = self.screen_rect.centerx
-        self.high_score_rect.top = self.score_rect.top
+        self.high_score_rect.top += 20
 
 
     def prep_level(self):
