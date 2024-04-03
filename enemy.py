@@ -14,8 +14,8 @@ class Dog(Sprite):
         
         self.v = v
         self.entered = False # For when alien enters screen
-        
         self.dog_images = [pg.transform.scale(pg.image.load(f'images/dog_{n}.png'), (self.settings.image_scale, self.settings.image_scale)) for n in range (3)]
+        self.dog_lasers = game.dog_lasers.laser_group
         self.image = pg.transform.scale(pg.image.load('images/dog_0.png'), (self.settings.image_scale, self.settings.image_scale))
         self.rect = self.image.get_rect()
         self.timer_normal = Timer(image_list=self.dog_images)
@@ -30,7 +30,8 @@ class Dog(Sprite):
     def update(self):
         
       # Random roll to shoot laser
-      # Move alien from left to right
+        if randint(0, 10) == 0:
+            self.dog_lasers.add(self.rect, 1)
         self.x += self.v.x
         self.rect.x = self.x
         self.checkEdge()

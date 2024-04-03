@@ -52,7 +52,7 @@ class Player(Sprite):
             elif event.key == pg.K_SPACE:
                 self.cease_fire()
 
-    def fire(self): self.lasers.add()
+    def fire(self): self.lasers.add(self.rect)
     def open_fire(self): self.continuous_fire = True
     def cease_fire(self): self.continuous_fire = False
 
