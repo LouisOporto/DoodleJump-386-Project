@@ -1,18 +1,21 @@
 from pygame.sprite import Sprite, Group
+from timer import Timer
 import pygame as pg
 
 class Dog(Sprite):
-    dog_jump_images = (pg.image.load(f'images/dog_{n}.png') for n in range (3))
-
     def __init__(self, game):
         super().__init__()
         self.game = game
         self.screen = game.screen
         self.settings = game.settings
         
+        self.dog_images = [pg.transform.scale(pg.image.load(f'images/dog_{n}.png'), (self.settings.image_scale, self.settings.image_scale)) for n in range (3)]
 
         self.image = pg.transform.scale(pg.image.load('images/dog_0.png'), (self.settings.image_scale, self.settings.image_scale))
         self.rect = self.image.get_rect()
+
+        self.timer_normal = Timer(image_list=self.dog_images)
+        self.timer = self.timer_normal  
 
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
@@ -22,7 +25,9 @@ class Dog(Sprite):
     def update(self):
       self.draw()
     
-    def draw(self): self.screen.blit(self.image, self.rect)
+    def draw(self): 
+        self.image = self.timer.image()
+        self.screen.blit(self.image, self.rect)
 
 class Dogs:
     def __init__(self, game):

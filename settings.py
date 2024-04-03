@@ -20,7 +20,7 @@ class Settings:
         #self.lasers_allowed = 3               (optional) limiting the amount of lasers on screen
 
         #Player Variables
-        self.image_scale = 50
+        self.image_scale = 75
         self.player_speed = 20
         self.gravity = 1
         self.fall_speed = 20
