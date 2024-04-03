@@ -5,7 +5,7 @@ class Sound:
     def __init__(self, bg_music):
         pg.mixer.init()
         pg.mixer.music.load(bg_music)
-        pg.mixer.music.set_volume(1.000)
+        pg.mixer.music.set_volume(.50)
         # TODO: Initialize all sounds needed in the game instance
         # sound = pg.mixer.Sound("filename.wav")
         # self.sounds = {"sound1" : sound}
@@ -25,7 +25,7 @@ class Sound:
         # pg.mixer.Sound.play(self.sounds['enemy laser' if type == LaserType.enemey else 'playerlaser'])
         pass
 
-    def bounce(self): 
+    def bounce(self):
         pg.mixer.Sound.play(self.sounds["jump"])
 
     def gameover(self):
