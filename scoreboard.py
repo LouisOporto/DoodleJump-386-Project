@@ -7,6 +7,7 @@ class Scoreboard:
         self.screen_rect = game.screen.get_rect()
         self.settings = game.settings
         self.stats = game.stats
+        self.sound = game.sound
 
         self.text_color = (255, 255, 255)
         self.font = pg.font.SysFont(None, 48)
@@ -59,6 +60,7 @@ class Scoreboard:
             self.stats.level += 1
             self.platform = 0
             self.prep_level()
+            self.sound.up_level()
 
 
     def platformJumped(self):

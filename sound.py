@@ -13,9 +13,11 @@ class Sound:
         woof_sound = pg.mixer.Sound('sounds/woof.wav')
         dog_hit_sound = pg.mixer.Sound('sounds/dog_hit.wav')
         cat_hit_sound = pg.mixer.Sound('sounds/cat_hit.wav')
+        level_up_sound = pg.mixer.Sound('sounds/level_up.wav')
         self.sounds = {'jump' : jump_sound, 'gameover' : gameover_sound,
                        'meow' : meow_sound, 'woof' : woof_sound,
-                       'dog_hit' : dog_hit_sound, 'cat_hit' : cat_hit_sound}
+                       'dog_hit' : dog_hit_sound, 'cat_hit' : cat_hit_sound,
+                       'level_up' : level_up_sound}
 
     def play_bg(self):
         pg.mixer.music.play(-1, 0, 0)
@@ -37,6 +39,9 @@ class Sound:
 
     def player_hit(self):
         pg.mixer.Sound.play(self.sounds['cat_hit'])
+
+    def up_level(self):
+        pg.mixer.Sound.play(self.sounds['level_up'])
 
     def gameover(self):
         self.stop_bg()
