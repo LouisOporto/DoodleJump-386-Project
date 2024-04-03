@@ -15,7 +15,7 @@ class Dog(Sprite):
         self.v = v
         self.entered = False # For when alien enters screen
         self.dog_images = [pg.transform.scale(pg.image.load(f'images/dog_{n}.png'), (self.settings.image_scale, self.settings.image_scale)) for n in range (3)]
-        self.dog_lasers = game.dog_lasers.laser_group
+        self.dog_lasers = game.dog_lasers
         self.image = pg.transform.scale(pg.image.load('images/dog_0.png'), (self.settings.image_scale, self.settings.image_scale))
         self.rect = self.image.get_rect()
         self.timer_normal = Timer(image_list=self.dog_images)
@@ -59,6 +59,8 @@ class Dogs:
         self.settings = game.settings
         self.dog_group = Group()
         self.laser_group = game.lasers.laser_group
+        self.dog_laser_group = game.dog_lasers.laser_group
+        self.player = self.game.player
         self.sb = game.scoreboard
         self.stats = game.stats
     
@@ -68,7 +70,7 @@ class Dogs:
 
     def create_dog(self, x_position, right):
         v = Vector(-self.settings.dog_speed,0) if right else Vector(self.settings.dog_speed,0)
-        new_dog = Dog(self, v)
+        new_dog = Dog(self.game, v)
         new_dog.x = x_position
         new_dog.rect.x = x_position
         self.dog_group.add(new_dog)
@@ -88,3 +90,7 @@ class Dogs:
             #Play alien death sound
             self.stats.score += self.settings.dog_point
             self.sb.prep_score()
+
+        player_collided = pg.sprite.spritecollide(self.player, self.dog_laser_group, False)
+        if len(player_collided):
+            self.game.game_over()
