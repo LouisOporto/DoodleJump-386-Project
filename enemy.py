@@ -3,6 +3,8 @@ import pygame as pg
 from random import randint
 from vector import Vector
 from timer import Timer
+from sound import Sound
+from laser import Lasers
 
 class Dog(Sprite):
     def __init__(self, game, v=Vector()):
@@ -10,6 +12,7 @@ class Dog(Sprite):
         self.game = game
         self.screen = game.screen
         self.settings = game.settings
+        self.sound = game.sound
         
         self.v = v
         self.entered = False # For when alien enters screen
@@ -31,6 +34,7 @@ class Dog(Sprite):
       # Random roll to shoot laser
         if randint(0, 10) == 0:
             self.dog_lasers.add(self.rect, 1)
+            self.sound.dog_shoot()
         self.x += self.v.x
         self.rect.x = self.x
         self.checkEdge()
@@ -62,6 +66,7 @@ class Dogs:
         self.player = self.game.player
         self.sb = game.scoreboard
         self.stats = game.stats
+        self.sound = game.sound
     
     def reset_dogs(self):
         self.dog_group.empty()
@@ -75,7 +80,6 @@ class Dogs:
         self.dog_group.add(new_dog)
 
     def update(self):
-        
         if randint(0, int(self.settings.dog_spawn_rate)) == 0:
             if randint(0, 1) == 0:
                 self.create_dog(-50, False)
@@ -86,7 +90,7 @@ class Dogs:
             dog.update()
             
         if pg.sprite.groupcollide(self.dog_group, self.laser_group, True, True):
-            #Play alien death sound
+            self.sound.enemy_hit()
             self.stats.score += self.settings.dog_point
             self.sb.prep_score()
 

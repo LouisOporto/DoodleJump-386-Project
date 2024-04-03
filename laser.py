@@ -3,13 +3,14 @@ from pygame.sprite import Sprite
 from vector import Vector
 
 class Laser(Sprite):
-    def __init__(self, game, rect, v):
+    def __init__(self, game, rect, v, sound):
         pg.sprite.Sprite.__init__(self)
         self.game = game
         self.v = v
         self.screen = game.screen
         self.settings = game.settings
         self.color = self.settings.laser_color
+        sound.shoot_laser()
 
         self.rect = pg.Rect(0, 0, self.settings.laser_width, self.settings.laser_height)
         #Change location to be given by arguments (x) and (y)
@@ -35,14 +36,15 @@ class Lasers():
         self.screen = game.screen
         self.settings = game.settings 
         self.laser_group = pg.sprite.Group()
+        self.sound = game.sound
     
     def resetLasers(self):
         self.laser_group.empty()
 
     def add(self, rect, direction=-1):
         # Add argument to get direction of laser, position (x, y)
-        #if len(self.laser_group) < self.settings.lasers_allowed:                     (optional) limiting the amount of lasers on screen
-            new_laser = Laser(self.game, rect, v=Vector(0, direction))
+        if len(self.laser_group) < self.settings.lasers_allowed:                     #(optional) limiting the amount of lasers on screen
+            new_laser = Laser(self.game, rect, v=Vector(0, direction), sound=self.sound)
             self.laser_group.add(new_laser) 
     
     def update(self):

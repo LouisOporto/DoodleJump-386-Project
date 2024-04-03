@@ -12,7 +12,12 @@ class Sound:
 
         jump_sound = pg.mixer.Sound('sounds/jump.wav')
         gameover_sound = pg.mixer.Sound('sounds/gameover.wav')
-        self.sounds = {'jump' : jump_sound, 'gameover' : gameover_sound}
+        meow_sound = pg.mixer.Sound('sounds/meow.wav')
+        woof_sound = pg.mixer.Sound('sounds/woof.wav')
+        dog_hit_sound = pg.mixer.Sound('sounds/dog_hit.wav')
+        self.sounds = {'jump' : jump_sound, 'gameover' : gameover_sound,
+                       'meow' : meow_sound, 'woof' : woof_sound,
+                       'dog_hit' : dog_hit_sound}
 
     def play_bg(self):
         pg.mixer.music.play(-1, 0, 0)
@@ -20,13 +25,17 @@ class Sound:
     def stop_bg(self):
         pg.mixer.music.stop()
 
-    def shoot_laser(self, type):
-        # TODO Replace self.sounds with proper naming convetions
-        # pg.mixer.Sound.play(self.sounds['enemy laser' if type == LaserType.enemey else 'playerlaser'])
-        pass
+    def shoot_laser(self):
+        pg.mixer.Sound.play(self.sounds['meow'])
+
+    def dog_shoot(self):
+        pg.mixer.Sound.play(self.sounds["woof"])
 
     def bounce(self): 
         pg.mixer.Sound.play(self.sounds["jump"])
+    
+    def enemy_hit(self):
+        pg.mixer.Sound.play(self.sounds['dog_hit'])
 
     def gameover(self):
         self.stop_bg()

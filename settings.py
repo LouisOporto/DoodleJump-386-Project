@@ -17,7 +17,7 @@ class Settings:
         self.laser_width = 5
         self.laser_height = 20
         self.laser_color = (0, 255, 255)
-        #self.lasers_allowed = 3               (optional) limiting the amount of lasers on screen
+        self.lasers_allowed = 3               #(optional) limiting the amount of lasers on screen
 
         #Player Variables
         self.image_scale = 75

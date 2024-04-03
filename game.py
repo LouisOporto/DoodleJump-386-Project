@@ -68,8 +68,8 @@ class Game:
                 if b.rect.collidepoint(x, y):
                     b.press()
 
+
     def game_over(self):
-        # TODO Play game over music
         self.sound.gameover()
         self.sound.stop_bg()
         pg.mouse.set_visible(True)
@@ -98,7 +98,7 @@ class Game:
 
     def play(self):
         finished = False
-        self.sound.play_bg()
+        
         while not finished:
             self.checkEvent()
             self.screen.fill(self.settings.background_color)
