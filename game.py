@@ -35,22 +35,17 @@ class Game:
     
 
     def checkEvent(self):
-        # Cool idea to put all events into a single line for player to handle but would likely be less messy if all were here
         for event in pg.event.get():
             if event.type == QUIT:
                 pg.quit()
                 sys.exit()
-
             elif event.type == KEYDOWN:
                 if event.key == K_q:
                     pg.quit()
                     sys.exit()
-                if event.key == K_r:
-                    self.restart_game()
                 self.player.check_keydown_events(event)
             elif event.type == KEYUP:
                 self.player.check_keyup_events(event)
-
             elif event.type == MOUSEMOTION:
                 b = self.play_button
                 x, y = pg.mouse.get_pos()
@@ -62,7 +57,7 @@ class Game:
                     b.press()
 
     def game_over(self):
-        #Play game over music
+        # TODO Play game over music
         pg.mouse.set_visible(True)
         self.play_button.change_text('Play again?')
         self.play_button.show()
@@ -74,8 +69,9 @@ class Game:
         self.restart_game()
         # TODO - Start background music
 
+
     def restart_game(self):
-        #TODO Should reset score, player at starting position and remove all aliens and reset platform to one starting at the center of the map and below player
+        #Resets score, player, platforms, and dogs
         self.player.reset_player()
         self.platforms.reset_platforms()
         self.scoreboard.prep_score()
@@ -89,17 +85,14 @@ class Game:
     def play(self):
         finished = False
         while not finished:
-            self.screen.fill(self.settings.background_color)
-            # TODO Need to include a state where the game is visible, but the game is either finished or hasn't begun.
             self.checkEvent()
+            self.screen.fill(self.settings.background_color)
             self.platforms.update()
             self.player.update()
             self.scoreboard.update()
-
             if self.game_active:
                 self.dogs.update()
                 self.lasers.update()
-                
             else:
                 self.play_button.update()
 

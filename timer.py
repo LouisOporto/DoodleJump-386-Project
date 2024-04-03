@@ -1,7 +1,6 @@
 import pygame as pg
 
 class Timer:
-    """  """
     def __init__(self, image_list, start_index=0, delay=100, isLoop=True):
         self.image_list = image_list
         self.delay = delay

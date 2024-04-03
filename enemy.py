@@ -51,5 +51,5 @@ class Dogs:
     def update(self):
         for dog in self.dog_group.sprites():
             dog.update()
-
-    # TODO Make a class that manage all dogs
+        
+        pg.sprite.spritecollide(self.game.player)

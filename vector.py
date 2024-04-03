@@ -2,7 +2,6 @@ from io import UnsupportedOperation
 from math import sqrt
 
 class Vector:
-    """  """
     def __init__(self, x=0, y=0):
         self.x, self.y = x, y
     def __repr__(self):

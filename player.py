@@ -86,7 +86,6 @@ class Player(Sprite):
 
 
     def jump(self):
-        # TODO Refactor so that the player can jump and fall further than were it started, this assumes a jumping method where the player will land on the same level as before
         self.y -= 20
         self.v.y = -self.settings.jump_height
 
