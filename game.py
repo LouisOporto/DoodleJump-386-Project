@@ -20,6 +20,7 @@ class Game:
         pg.display.set_caption("Doodle Jump")
 
         self.lasers = Lasers(self)
+        self.dog_lasers = Lasers(self)
         self.stats = Stats(self)
         self.scoreboard = Scoreboard(self)
         self.player = Player(self)
@@ -33,7 +34,7 @@ class Game:
     def isActive(self):
         return self.game_active
     
-
+    
     def checkEvent(self):
         for event in pg.event.get():
             if event.type == QUIT:
@@ -72,14 +73,15 @@ class Game:
 
     def restart_game(self):
         #Resets score, player, platforms, and dogs
-        self.player.reset_player()
-        self.platforms.reset_platforms()
-        self.scoreboard.prep_score()
         self.settings.initialize_dynamic_settings()
         self.stats.reset()
-        # self.dogs.reset_dogs()
-        # self.lasers.reset()
-        # self.dog_lasers.reset()
+        self.scoreboard.prep_score()
+        self.scoreboard.prep_level()
+        self.player.reset_player()
+        self.platforms.reset_platforms()
+        self.dogs.reset_dogs()
+        self.lasers.resetLasers()
+        self.dog_lasers.resetLasers()
 
 
     def play(self):

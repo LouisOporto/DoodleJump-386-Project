@@ -4,7 +4,7 @@ class Stats:
         self.settings = game.settings
         self.reset()
         with open('output.txt', 'r') as file:
-            self.high_score = int(file.readline())
+            self.high_score = float(file.readline())
 
 
     def reset(self):
