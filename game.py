@@ -95,6 +95,7 @@ class Game:
             if self.game_active:
                 self.dogs.update()
                 self.lasers.update()
+                self.dog_lasers.update()
             else:
                 self.play_button.update()
 

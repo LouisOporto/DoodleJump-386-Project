@@ -18,13 +18,15 @@ class Laser(Sprite):
         self.y = float(self.rect.y)
 
     def update(self):
-        self.y -= self.settings.laser_speed
+        self.y += self.v.y * self.settings.laser_speed
         self.rect.y = self.y
     
         if self.rect.bottom < 0: self.kill()
+        if self.rect.top > self.settings.screen_height: self.kill()
         self.draw()
     
-    def draw(self): pg.draw.rect(self.screen, self.color, self.rect)
+    def draw(self): 
+        pg.draw.rect(self.screen, self.color, self.rect)
 
 
 class Lasers():
@@ -40,7 +42,7 @@ class Lasers():
     def add(self, rect, direction=-1):
         # Add argument to get direction of laser, position (x, y)
         #if len(self.laser_group) < self.settings.lasers_allowed:                     (optional) limiting the amount of lasers on screen
-            new_laser = Laser(self.game, rect, v=Vector(0, direction*self.settings.laser_speed))
+            new_laser = Laser(self.game, rect, v=Vector(0, direction))
             self.laser_group.add(new_laser) 
     
     def update(self):
