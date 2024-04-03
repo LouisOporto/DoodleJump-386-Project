@@ -9,6 +9,7 @@ class Player(Sprite):
         self.screen = game.screen
         self.screen_rect = game.screen.get_rect()
         self.settings = game.settings
+        self.sound = game.sound
 
         self.image = pg.transform.scale(pg.image.load('images/cat_0.png'), (self.settings.image_scale, self.settings.image_scale))
         self.rect = self.image.get_rect()
@@ -88,6 +89,7 @@ class Player(Sprite):
     def jump(self):
         self.y -= 20
         self.v.y = -self.settings.jump_height
+        self.sound.bounce()
 
     def draw(self):
         self.screen.blit(self.image, self.rect)
