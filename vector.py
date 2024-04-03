@@ -1,6 +1,7 @@
 from io import UnsupportedOperation
 from math import sqrt
 
+
 class Vector:
     def __init__(self, x=0, y=0):
         self.x, self.y = x, y
@@ -46,6 +47,5 @@ class Vector:
         return self
     
 
-if __name__ == "__main__":
-    print("Wrong folder this is Vector.py!")
-    print("Run game.py to play the game!")
+if __name__ == '__main__':
+    print("\nERROR: vector.py is the wrong file! To play run game.py\n")

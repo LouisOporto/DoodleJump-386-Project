@@ -39,10 +39,8 @@ class Game:
         self.text_rect.y += 48
 
 
-
     def isActive(self):
         return self.game_active
-
 
     def checkEvent(self):
         for event in pg.event.get():
@@ -68,7 +66,6 @@ class Game:
                 if b.rect.collidepoint(x, y):
                     b.press()
 
-
     def game_over(self):
         self.sound.gameover()
         self.sound.stop_bg()
@@ -77,11 +74,9 @@ class Game:
         self.play_button.show()
         self.game_active = False
 
-
     def activate(self):
         self.restart_game()
         self.sound.play_bg()
-
 
     def restart_game(self):
         #Resets score, player, platforms, and dogs
@@ -95,10 +90,8 @@ class Game:
         self.lasers.resetLasers()
         self.dog_lasers.resetLasers()
 
-
     def play(self):
         finished = False
-        
         while not finished:
             self.checkEvent()
             self.screen.fill(self.settings.background_color)
@@ -112,7 +105,6 @@ class Game:
             else:
                 self.play_button.update()
                 self.screen.blit(self.text_img, self.text_rect)
-
             pg.display.flip()
             time.sleep(0.02)
 

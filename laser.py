@@ -2,20 +2,22 @@ import pygame as pg
 from pygame.sprite import Sprite
 from vector import Vector
 
+
 class Laser(Sprite):
-    def __init__(self, game, rect, v, sound):
+    def __init__(self, game, rect, v):
         pg.sprite.Sprite.__init__(self)
         self.game = game
         self.v = v
         self.screen = game.screen
         self.settings = game.settings
         self.color = self.settings.laser_color
-        sound.cat_shoot()
-
+        self.sound = game.sound
+        if v.y < 0:
+            pass # Cat alreday meowed no need to add here
+        else:
+            self.sound.dog_shoot()
         self.rect = pg.Rect(0, 0, self.settings.laser_width, self.settings.laser_height)
-        #Change location to be given by arguments (x) and (y)
         self.rect.midtop = rect.midtop
-
         self.y = float(self.rect.y)
 
     def update(self):
@@ -36,17 +38,19 @@ class Lasers():
         self.screen = game.screen
         self.settings = game.settings 
         self.laser_group = pg.sprite.Group()
-        self.sound = game.sound
-    
+
     def resetLasers(self):
         self.laser_group.empty()
 
     def add(self, rect, direction=-1):
         # Add argument to get direction of laser, position (x, y)
         if len(self.laser_group) < self.settings.lasers_allowed:                     #(optional) limiting the amount of lasers on screen
-            new_laser = Laser(self.game, rect, v=Vector(0, direction), sound=self.sound)
+            new_laser = Laser(self.game, rect, v=Vector(0, direction))
             self.laser_group.add(new_laser) 
     
     def update(self):
         for laser in self.laser_group.sprites():
             laser.update()
+
+if __name__ == '__main__':
+    print("\nERROR: laser.py is the wrong file! To play run game.py\n")

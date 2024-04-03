@@ -1,5 +1,6 @@
 import pygame as pg
 
+
 class Timer:
     def __init__(self, image_list, start_index=0, delay=100, isLoop=True):
         self.image_list = image_list
@@ -27,3 +28,7 @@ class Timer:
     def image(self):
         self.next_frame()
         return self.image_list[self.index]
+    
+
+if __name__ == '__main__':
+    print("\nERROR: timer.py is the wrong file! To play run game.py\n")

@@ -29,7 +29,6 @@ class Settings:
 
         self.initialize_dynamic_settings()
     
-    
     def initialize_dynamic_settings(self):
         self.dog_spawn_rate = 500
         self.dog_shoot = 100
@@ -44,3 +43,6 @@ class Settings:
         self.dog_point *= 1.1
         self.next_level += 2
         
+
+if __name__ == '__main__':
+    print("\nERROR: settings.py is the wrong file! To play run game.py\n")

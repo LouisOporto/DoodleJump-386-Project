@@ -1,5 +1,6 @@
 import pygame as pg
 
+
 class Button:
     def __init__(self, game, text, size=(200, 50), text_color=(255, 255, 255), bg_color=(0, 0, 255), selected_color=(0, 255, 50)):
         self.game = game
@@ -68,4 +69,4 @@ class Button:
 
 
 if __name__ == '__main__':
-    print("\nERROR: button.py is the wrong file! Run play from alien_invasions.py\n")
+    print("\nERROR: button.py is the wrong file! To play run game.py\n")

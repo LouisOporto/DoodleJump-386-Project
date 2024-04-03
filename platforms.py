@@ -13,7 +13,6 @@ class PlatformGroup:
         self.initiate_platofrm()
         self.screen_rect = self.screen.get_rect()
 
-
     def update(self):
         player_collided = pg.sprite.spritecollide(self.player, self.platform_group, False)
         if self.player.falling:
@@ -32,18 +31,15 @@ class PlatformGroup:
 
             if platform.check_bottom():
                 self.platform_group.remove(platform)
-        
             
     def reset_platforms(self):
         self.platform_group.empty()
         self.initiate_platofrm()
 
-        
     def initiate_platofrm(self):
         # Will draw the first inital platform when the game begins
         start_platform = Platform(self.game, self.settings.screen_width / 2 - self.settings.platform_max_width / 2, self.settings.screen_height - 100)
         self.platform_group.add(start_platform)
-    
 
     def create_sucession(self):
         # Whenever a platform collides with a player, the game will create the next set of platforms 
@@ -56,7 +52,6 @@ class PlatformGroup:
             new_platform = Platform(self.game, xpos_list[x], -10, width_list[x])
             self.platform_group.add(new_platform)
 
-
     def fall(self):
         if not self.player.falling:
             # When player hits any platform all platforms spawned and exisitng will fall down to imitate a jump from the player.
@@ -65,7 +60,6 @@ class PlatformGroup:
 
 
 class Platform(Sprite):
-
     def __init__(self, game, x, y, width=100):
         super().__init__()
         self.game = game
@@ -78,17 +72,17 @@ class Platform(Sprite):
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
         
-
     def update(self):
         self.rect.y = self.y
         self.draw()
 
-
     def draw(self):
         self.screen.fill(self.color, self.rect)
-
 
     def check_bottom(self):
         if self.y >= self.settings.screen_height: return True
         return False
-    
+
+
+if __name__ == '__main__':
+    print("\nERROR: platforms.py is the wrong file! To play run game.py\n")

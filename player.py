@@ -2,6 +2,7 @@ import pygame as pg
 from vector import Vector
 from pygame.sprite import Sprite
 
+
 class Player(Sprite):
     def __init__(self, game):
         super().__init__()
@@ -59,7 +60,11 @@ class Player(Sprite):
                 self.cease_fire()
 
     def fire(self): self.lasers.add(self.rect)
-    def open_fire(self): self.continuous_fire = True
+
+    def open_fire(self): 
+        self.sound.cat_shoot()
+        self.continuous_fire = True
+
     def cease_fire(self): self.continuous_fire = False
 
     def update(self):
@@ -95,7 +100,6 @@ class Player(Sprite):
     
         self.draw()
 
-
     def jump(self):
         self.y -= 20
         self.v.y = -self.settings.jump_height
@@ -103,3 +107,6 @@ class Player(Sprite):
 
     def draw(self):
         self.screen.blit(self.image, self.rect)
+
+if __name__ == '__main__':
+    print("\nERROR: player.py is the wrong file! To play run game.py\n")

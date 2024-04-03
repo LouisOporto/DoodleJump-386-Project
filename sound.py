@@ -1,6 +1,7 @@
 import pygame as pg
 import time
 
+
 class Sound:
     def __init__(self, bg_music):
         pg.mixer.init()
@@ -47,3 +48,7 @@ class Sound:
         self.stop_bg()
         pg.mixer.Sound.play(self.sounds["gameover"])
         time.sleep(2.8)
+
+
+if __name__ == '__main__':
+    print("\nERROR: sound.py is the wrong file! To play run game.py\n")

@@ -3,8 +3,7 @@ import pygame as pg
 from random import randint
 from vector import Vector
 from timer import Timer
-from sound import Sound
-from laser import Lasers
+
 
 class Dog(Sprite):
     def __init__(self, game, v=Vector()):
@@ -34,7 +33,6 @@ class Dog(Sprite):
       # Random roll to shoot laser
         if randint(0, int(self.settings.dog_shoot)) == 0:
             self.dog_lasers.add(self.rect, 1)
-            self.sound.dog_shoot()
         self.x += self.v.x
         self.rect.x = self.x
         self.checkEdge()
@@ -50,10 +48,10 @@ class Dog(Sprite):
                 self.x = self.settings.screen_width - self.rect.width
                 self.v = -self.v
         
-
     def draw(self): 
         self.image = self.timer.image()
         self.screen.blit(self.image, self.rect)
+
 
 class Dogs:
     def __init__(self, game):
@@ -70,7 +68,6 @@ class Dogs:
     
     def reset_dogs(self):
         self.dog_group.empty()
-
 
     def create_dog(self, x_position, right):
         v = Vector(-self.settings.dog_speed,0) if right else Vector(self.settings.dog_speed,0)
@@ -100,3 +97,7 @@ class Dogs:
             self.player.draw()
             self.player.isAlive = False
             self.sound.player_hit()
+
+
+if __name__ == '__main__':
+    print("\nERROR: enemy.py is the wrong file! To play run game.py\n")
