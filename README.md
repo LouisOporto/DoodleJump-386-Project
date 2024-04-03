@@ -25,3 +25,5 @@ The cat should be visible before the game starts, the player is prompted to jump
 
 Update April 2
 The player only objective is reach as high as possible, whilst avoiding enmey lasers from above (the aliens only fly by left(odd) or right(event) to shoot a predetermined xpos on the map before leaving the screen again) The player cant shoot the aliens, but only dodge lasers. The player cant jump, but everytime it collides with a platform it will give him the ability to jump automatically. This also spawns another platform reacheable to the player with a dynamic minimum platform width. Max - 100 pixels down to a variable min width. The game will increase odds of enemy spawning and maybe speed of the character, the min width of the platforms will decrase until it reaches a min of x pixels. The game is one life one chance. The number of platforms is determined by a random number (1 - 4) can spawn
+
+The illusion here is that the platforms are going down not the player jumping up. The characer is always in view, but the platforms are falling down. Makes it easier to deal with aliens at the top and player in the middle
