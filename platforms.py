@@ -47,9 +47,13 @@ class PlatformGroup:
         number_of_platforms = randint(1, 4)
         width_list = [randint(self.settings.platform_min_width, self.settings.platform_max_width) for x in range(0, number_of_platforms)]
         xpos_list = [randint(0, self.settings.screen_width - 100) for x in range(0, number_of_platforms)]
+        if number_of_platforms > 1:
+            spiked = randint(0, 4)
+        else: 
+            spiked = 4
 
         for x in range(0, number_of_platforms):
-            new_platform = Platform(self.game, xpos_list[x], -10, width_list[x])
+            new_platform = Platform(self.game, xpos_list[x], -10, width_list[x], x == spiked)
             self.platform_group.add(new_platform)
 
     def fall(self):
@@ -60,13 +64,14 @@ class PlatformGroup:
 
 
 class Platform(Sprite):
-    def __init__(self, game, x, y, width=100):
+    def __init__(self, game, x, y, width=100, isSpiked=False):
         super().__init__()
         self.game = game
         self.screen = game.screen
         self.settings = game.settings
-        self.color = game.settings.platform_color
+        self.color = game.settings.platform_color if not isSpiked else (255,0,0)
         self.width = width
+        self.isSpiked = isSpiked
         
         self.rect = pg.Rect(x, y, self.width, self.settings.platform_height)
         self.x = float(self.rect.x)
