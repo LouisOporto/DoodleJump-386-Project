@@ -1,12 +1,16 @@
 class Settings:
     def __init__(self):
         #Game Screen
-        self.screen_width = 900
-        self.screen_height = 900
+        self.screen_width = 600
+        self.screen_height = 1000
         self.background_color = (10, 10, 30)
 
         # Platform Spawning
         self.platform_spawn_rate = 30
+        self.platform_height = 10
+        self.platform_max_width = 100
+        self.platform_min_width = 10
+        self.platform_color = (255, 255, 255)
 
         # Laser Settings
         self.laser_speed = 10
@@ -16,6 +20,7 @@ class Settings:
         #self.lasers_allowed = 3               (optional) limiting the amount of lasers on screen
 
         #Player Variables
+        self.image_scale = 50
         self.player_speed = 20
         self.jumping = False
         self.gravity = 10
