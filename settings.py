@@ -32,13 +32,14 @@ class Settings:
     
     def initialize_dynamic_settings(self):
         self.dog_spawn_rate = 500
+        self.dog_shoot = 100
         self.platform_point = 100
         self.dog_point = 250
         self.next_level = 10
 
-
     def increase_dynamics(self):
         self.dog_spawn_rate //= 1.1
+        self.dog_shoot //= 1.1
         self.platform_point *= 1.1
         self.dog_point *= 1.1
         self.next_level += 2
