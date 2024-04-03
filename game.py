@@ -61,6 +61,8 @@ class Game:
 
     def game_over(self):
         # TODO Play game over music
+        self.sound.gameover()
+        self.sound.stop_bg()
         pg.mouse.set_visible(True)
         self.play_button.change_text('Play again?')
         self.play_button.show()
@@ -110,8 +112,3 @@ if __name__ == "__main__":
     print("Starting Doodle Jump Game")
     game = Game()
     game.play()
-
-  
-
-
-  
