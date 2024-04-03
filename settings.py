@@ -28,11 +28,13 @@ class Settings:
 
         self.initialize_dynamic_settings()
     
+    
     def initialize_dynamic_settings(self):
         self.enemy_spawn_rate = 500
         self.platform_point = 100
         self.dog_point = 250
         self.next_level = 10
+
 
     def increase_dynamics(self):
         self.enemy_spawn_rate *= 0.9
