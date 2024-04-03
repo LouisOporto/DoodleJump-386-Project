@@ -29,11 +29,13 @@ class Player(Sprite):
     def reset_player(self):
         self.rect.midbottom = self.screen_rect.midbottom 
         self.rect.y -= 100
+        self.v = Vector()
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
         self.moving_right = False
         self.moving_left = False
         self.falling = True
+        self.continuous_fire = False
 
     def check_keydown_events(self, event):
         if self.game.isActive():
