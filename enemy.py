@@ -32,7 +32,7 @@ class Dog(Sprite):
     def update(self):
         
       # Random roll to shoot laser
-        if randint(0, 10) == 0:
+        if randint(0, int(self.settings.dog_shoot)) == 0:
             self.dog_lasers.add(self.rect, 1)
             self.sound.dog_shoot()
         self.x += self.v.x

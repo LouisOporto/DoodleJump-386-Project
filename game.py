@@ -20,7 +20,7 @@ class Game:
         self.screen = pg.display.set_mode((self.settings.screen_width, self.settings.screen_height),0, 32)
         pg.display.set_caption("Doodle Jump")
 
-        self.sound = Sound(bg_music="sounds/music.wav")
+        self.sound = Sound(bg_music="sounds/background.wav")
         self.lasers = Lasers(self)
         self.dog_lasers = Lasers(self)
         self.stats = Stats(self)
@@ -42,8 +42,8 @@ class Game:
 
     def isActive(self):
         return self.game_active
-    
-    
+
+
     def checkEvent(self):
         for event in pg.event.get():
             if event.type == QUIT:
@@ -76,7 +76,7 @@ class Game:
         self.play_button.change_text('Play again?')
         self.play_button.show()
         self.game_active = False
-        
+
 
     def activate(self):
         self.restart_game()
