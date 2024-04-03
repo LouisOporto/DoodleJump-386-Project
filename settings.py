@@ -9,7 +9,7 @@ class Settings:
         self.platform_spawn_rate = 30
         self.platform_height = 10
         self.platform_max_width = 100
-        self.platform_min_width = 10
+        self.platform_min_width = 20
         self.platform_color = (255, 255, 255)
 
         # Laser Settings
@@ -22,10 +22,10 @@ class Settings:
         #Player Variables
         self.image_scale = 50
         self.player_speed = 20
-        self.jumping = False
-        self.gravity = 10
-        self.jump_height = 75
-        self.y_velocity = self.jump_height
+        
+        self.gravity = 1
+        self.fall_speed = 20
+        self.jump_height = 25
 
         self.initialize_dynamic_settings()
     
