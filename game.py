@@ -30,6 +30,13 @@ class Game:
         self.play_button = Button(game=self, text='Play')
         self.game_active = False
 
+        self.font = pg.font.SysFont(None, 48)
+        self.text_img = self.font.render("Press UP to Start", True, (255, 255 ,255))
+        self.text_rect = pg.Rect(0, 0, self.text_img.get_width(), self.text_img.get_height())
+        self.text_rect.center = self.screen.get_rect().center
+        self.text_rect.y += 48
+
+
 
     def isActive(self):
         return self.game_active
@@ -44,6 +51,8 @@ class Game:
                 if event.key == K_q:
                     pg.quit()
                     sys.exit()
+                if event.key == K_UP:
+                    self.game_active = True
                 self.player.check_keydown_events(event)
             elif event.type == KEYUP:
                 self.player.check_keyup_events(event)
@@ -66,7 +75,6 @@ class Game:
         
 
     def activate(self):
-        self.game_active = True
         self.restart_game()
         # TODO - Start background music
 
@@ -98,6 +106,7 @@ class Game:
                 self.dog_lasers.update()
             else:
                 self.play_button.update()
+                self.screen.blit(self.text_img, self.text_rect)
 
             pg.display.flip()
             time.sleep(0.02)
