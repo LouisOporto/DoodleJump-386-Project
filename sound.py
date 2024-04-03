@@ -4,8 +4,8 @@ import time
 class Sound:
     def __init__(self, bg_music):
         pg.mixer.init()
-        pg.mixer_music.load(bg_music)
-        pg.mixer_music.set_volume(1.000)
+        pg.mixer.music.load(bg_music)
+        pg.mixer.music.set_volume(1.000)
         # TODO: Initialize all sounds needed in the game instance
         # sound = pg.mixer.Sound("filename.wav")
         # self.sounds = {"sound1" : sound}
@@ -30,6 +30,5 @@ class Sound:
 
     def gameover(self):
         self.stop_bg()
-        pg.mixer.music.load("sounds/gameover.wav")
-        self.play_bg()
+        pg.mixer.Sound.play(self.sounds["gameover"])
         time.sleep(2.8)

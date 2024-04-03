@@ -80,7 +80,7 @@ class Game:
 
     def activate(self):
         self.restart_game()
-        # TODO - Start background music
+        self.sound.play_bg()
 
 
     def restart_game(self):
