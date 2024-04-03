@@ -1,5 +1,4 @@
 from pygame.sprite import Sprite, Group
-from timer import Timer
 import pygame as pg
 from random import randint
 from vector import Vector
@@ -93,4 +92,6 @@ class Dogs:
 
         player_collided = pg.sprite.spritecollide(self.player, self.dog_laser_group, False)
         if len(player_collided):
-            self.game.game_over()
+            self.player.image = pg.transform.scale(pg.image.load('images/cat_2.png'), (self.settings.image_scale, self.settings.image_scale))
+            self.player.draw()
+            self.player.isAlive = False

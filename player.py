@@ -22,6 +22,7 @@ class Player(Sprite):
         self.moving_right = False
         self.moving_left = False
         self.falling = True
+        self.isAlive = True
 
         self.lasers = game.lasers
         self.continuous_fire = False
@@ -36,6 +37,8 @@ class Player(Sprite):
         self.moving_left = False
         self.falling = True
         self.continuous_fire = False
+        self.isAlive = True
+        self.image = pg.transform.scale(pg.image.load('images/cat_0.png'), (self.settings.image_scale, self.settings.image_scale))
 
     def check_keydown_events(self, event):
         if self.game.isActive():
@@ -83,6 +86,11 @@ class Player(Sprite):
             if self.continuous_fire: self.fire()
 
             if self.y > self.settings.screen_height:
+                self.game.game_over()
+            
+            if not self.isAlive:
+                self.image = pg.transform.scale(pg.image.load('images/cat_2.png'), (self.settings.image_scale, self.settings.image_scale))
+                self.draw()
                 self.game.game_over()
     
         self.draw()
