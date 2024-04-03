@@ -67,7 +67,7 @@ class Game:
         while not finished:
             self.screen.fill(self.settings.background_color)
             # TODO Need to include a state where the game is visible, but the game is either finished or hasn't begun.
-            self.checkEvent() # Should ignore player movement if the game isn't active
+            self.checkEvent()
             self.platforms.update()
             self.player.update()
             if self.game_active:

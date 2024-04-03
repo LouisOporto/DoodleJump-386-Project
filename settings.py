@@ -9,7 +9,7 @@ class Settings:
         self.platform_spawn_rate = 30
         self.platform_height = 10
         self.platform_max_width = 100
-        self.platform_min_width = 20
+        self.platform_min_width = 40
         self.platform_color = (255, 255, 255)
 
         # Laser Settings
@@ -22,7 +22,6 @@ class Settings:
         #Player Variables
         self.image_scale = 50
         self.player_speed = 20
-        
         self.gravity = 1
         self.fall_speed = 20
         self.jump_height = 25
@@ -31,7 +30,13 @@ class Settings:
     
     def initialize_dynamic_settings(self):
         self.enemy_spawn_rate = 500
+        self.platform_point = 100
+        self.dog_point = 250
+        self.next_level = 10
 
     def increase_dynamics(self):
         self.enemy_spawn_rate *= 0.9
+        self.platform_point *= 1.1
+        self.dog_point *= 1.1
+        self.next_level += 2
         

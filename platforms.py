@@ -18,13 +18,14 @@ class PlatformGroup:
             if len(player_collided) > 0:
                 self.player.jump()
                 self.create_sucession()
-                self.fall()
+        self.fall()
 
         for platform in self.platform_group.sprites():
             platform.update()
 
             if platform.check_bottom():
                 self.platform_group.remove(platform)
+        
         
             
     def initiate_platofrm(self):
@@ -40,12 +41,15 @@ class PlatformGroup:
         xpos_list = [randint(0, self.settings.screen_width - 100) for x in range(0, number_of_platforms)]
 
         for x in range(0, number_of_platforms):
-            new_platform = Platform(self.game, xpos_list[x], 700, width_list[x])
+            new_platform = Platform(self.game, xpos_list[x], -10, width_list[x])
             self.platform_group.add(new_platform)
 
     def fall(self):
-        # When player hits any platform all platforms spawned and exisitng will fall down to imitate a jump from the player.
-        pass
+        if not self.player.falling:
+            print("fall")
+            # When player hits any platform all platforms spawned and exisitng will fall down to imitate a jump from the player.
+            for platform in self.platform_group.sprites():
+                platform.y -= self.player.v.y * 2
 
 
 class Platform(Sprite):
@@ -65,6 +69,7 @@ class Platform(Sprite):
         
 
     def update(self):
+        self.rect.y = self.y
         self.draw()
 
     def draw(self):
