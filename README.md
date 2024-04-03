@@ -1,29 +1,32 @@
 # DoodleJump-386-Project
-Doodle Jump Clone made in PyGame
+Doodle Jump++ Clone made in PyGame
+
+A doodle jump clone that adds more to the original concept of the game.
+
+# Students
+Names - Louis Oporto, Amanda Chen
 
 
-# Modules
+## Run the Game
+To play the game run `py game.py`
 
-game.py
-player.py
-settings.py
-scoreboard.py
-timer.py
-sound.py
-platforms.py
-dogs.py
-vectors.py
-laser.py
+## Modules
+
 button.py
-
+enemy.py
+game.py
+laser.py
+platforms.py
+player.py
+scoreboard.py
+settings.py
+sound.py
+stats.py
+timer.py
+vector.py
 
 
 # Game Start
-
-The cat should be visible before the game starts, the player is prompted to jump to start. Once the player jumps the platform will below the cat will bounce the player and spawn the next random platforms for the cat to land on, this means that aliens should spawn twice as high as the platforms are spawned. The platfroms are reachable to the player, but random in their x position and quanitity. The aliens spawn randomly on top of the screen (with varying x-pos). When the player succeeds to bounce on the next platform the previous platform is despawned (perforamnce and to make the game one way). The game scores the player for the number of bounces (250 points) and enemies killed (500 points). No level progression, but difficulty by increasing spawn rate of enemies and making platforms widths thinner. The game takes record of score/highscore, with one life. If the player dies or falls that is the end of the round. Player gets a chance to restart the game if needed. Restart the game and reset the current score.
-
-
-Update April 2
-The player only objective is reach as high as possible, whilst avoiding enmey lasers from above (the aliens only fly by left(odd) or right(event) to shoot a predetermined xpos on the map before leaving the screen again) The player cant shoot the aliens, but only dodge lasers. The player cant jump, but everytime it collides with a platform it will give him the ability to jump automatically. This also spawns another platform reacheable to the player with a dynamic minimum platform width. Max - 100 pixels down to a variable min width. The game will increase odds of enemy spawning and maybe speed of the character, the min width of the platforms will decrase until it reaches a min of x pixels. The game is one life one chance. The number of platforms is determined by a random number (1 - 4) can spawn
+The cat should be visible before the game starts, the player is prompted to jump to start. Once the player jumps the platform below the cat will bounce the player and spawn the next random platforms for the cat to land on, this means that aliens should spawn twice as high to where the platforms will be placed for the player. The platfroms are reachable to the player, but the quantity of platforms and each of their x positions will be randomized. The dogs spawn randomly on top of the screen (either left or right of the screen). The dogs will shoot randomly down towards the player. The dogs will continue to exist until the player shoots back. When the player succeeds to bounce on the next platform the previous platform will "fall" and are despawned (perforamnce and to make the game one way). The game scores the player for the number of bounces (100 points) and enemies killed (250 points). Level progression with level difficulty increasing the spawn rate of enemies and making platforms widths thinner. The game takes record of score/highscore, with one life. If the player dies or falls that is the end of the round. Player gets a chance to restart the game if needed.
 
 The illusion here is that the platforms are going down not the player jumping up. The characer is always in view, but the platforms are falling down. Makes it easier to deal with aliens at the top and player in the middle
