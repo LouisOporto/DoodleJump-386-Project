@@ -99,3 +99,4 @@ class Dogs:
             self.player.image = pg.transform.scale(pg.image.load('images/cat_2.png'), (self.settings.image_scale, self.settings.image_scale))
             self.player.draw()
             self.player.isAlive = False
+            self.sound.player_hit()

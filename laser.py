@@ -10,7 +10,7 @@ class Laser(Sprite):
         self.screen = game.screen
         self.settings = game.settings
         self.color = self.settings.laser_color
-        sound.shoot_laser()
+        sound.cat_shoot()
 
         self.rect = pg.Rect(0, 0, self.settings.laser_width, self.settings.laser_height)
         #Change location to be given by arguments (x) and (y)
