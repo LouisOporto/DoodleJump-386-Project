@@ -2,7 +2,6 @@ import pygame as pg
 import time
 
 class Sound:
-    """  """
     def __init__(self, bg_music):
         pg.mixer.init()
         pg.mixer_music.load(bg_music)
@@ -12,7 +11,8 @@ class Sound:
         # self.sounds = {"sound1" : sound}
 
         jump_sound = pg.mixer.Sound('sounds/jump.wav')
-        self.sounds = {'jump' : jump_sound}
+        gameover_sound = pg.mixer.Sound('sounds/gameover.wav')
+        self.sounds = {'jump' : jump_sound, 'gameover' : gameover_sound}
 
     def play_bg(self):
         pg.mixer.music.play(-1, 0, 0)
@@ -25,13 +25,11 @@ class Sound:
         # pg.mixer.Sound.play(self.sounds['enemy laser' if type == LaserType.enemey else 'playerlaser'])
         pass
 
-    def bounce(self):
-        # TODO Replace jump with proper sound
+    def bounce(self): 
         pg.mixer.Sound.play(self.sounds["jump"])
 
     def gameover(self):
-        # TODO
-        pg.mixer.music.stop()
-        pg.mixer.music.load("audios/gameover.wav")
-        pg.play_bg()
+        self.stop_bg()
+        pg.mixer.music.load("sounds/gameover.wav")
+        self.play_bg()
         time.sleep(2.8)
