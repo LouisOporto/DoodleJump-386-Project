@@ -6,18 +6,19 @@ class Player:
         self.screen_rect = game.screen.get_rect()
         self.settings = game.settings
 
-        self.image = pg.transform.scale(pg.image.load('images/cat_0.png'), (150, 150))
+        self.image = pg.transform.scale(pg.image.load('images/cat_0.png'), (self.settings.image_scale, self.settings.image_scale))
         self.rect = self.image.get_rect()
 
-        self.rect1 = (100,150)
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.rect.midbottom = self.screen_rect.midbottom 
+        self.rect.y -= 100
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
 
+        self.y_velocity = self.settings.jump_height
         self.moving_right = False
         self.moving_left = False
 
-        self.lasers = game.lasers
+        self.lasers = game.lasers # Remove shooting function only enemies can shoot
         self.continuous_fire = False
 
     def check_keydown_events(self, event):
@@ -57,14 +58,15 @@ class Player:
 
 
     def jump(self):
+        # TODO Refactor so that the player can jump and fall further than were it started, this assumes a jumping method where the player will land on the same level as before
         if self.settings.jumping:
-            self.image = pg.transform.scale(pg.image.load('images/cat_1.png'), (150, 150))
-            self.y -= self.settings.y_velocity
-            self.settings.y_velocity -= self.settings.gravity
-            if self.settings.y_velocity < -self.settings.jump_height:
-                self.image = pg.transform.scale(pg.image.load('images/cat_0.png'), (150, 150))
+            self.image = pg.transform.scale(pg.image.load('images/cat_1.png'), (self.settings.image_scale, self.settings.image_scale))
+            self.y -= self.y_velocity
+            self.y_velocity -= self.settings.gravity
+            if self.y_velocity < -self.settings.jump_height:
+                self.image = pg.transform.scale(pg.image.load('images/cat_0.png'), (self.settings.image_scale, self.settings.image_scale))
                 self.settings.jumping = False
-                self.settings.y_velocity = self.settings.jump_height
+                self.y_velocity = self.settings.jump_height
 
 
     def draw(self):

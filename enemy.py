@@ -10,7 +10,7 @@ class Dog(Sprite):
         self.screen = game.screen
         self.settings = game.settings
 
-        self.image = pg.transform.scale(pg.image.load('images/dog_0.png'), (150, 130))
+        self.image = pg.transform.scale(pg.image.load('images/dog_0.png'), (self.settings.image_scale, self.settings.image_scale))
         self.rect = self.image.get_rect()
 
         self.rect.x = self.rect.width
