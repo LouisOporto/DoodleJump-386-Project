@@ -38,8 +38,8 @@ class Settings:
         self.next_level = 10
 
     def increase_dynamics(self):
-        self.dog_spawn_rate //= 1.1
-        self.dog_shoot //= 1.1
+        self.dog_spawn_rate = self.dog_spawn_rate // 1.1
+        self.dog_shoot = self.dog_shoot // 1.1
         self.platform_point *= 1.1
         self.dog_point *= 1.1
         self.next_level += 2
