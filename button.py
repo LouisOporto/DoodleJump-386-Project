@@ -47,11 +47,7 @@ class Button:
         self.selected = False
         self.visible = False
         pg.mouse.set_visible(False)
-        """ self.sb.prep_score()
-        self.sb.prep_level()
-        self.sb.prep_ships() """
         self.game.activate()
-        self.settings.initialize_dynamic_settings()
 
     def prep_text(self):
         self.notselected_img = self.font.render(self.text, True, self.text_color, self.bg_color)

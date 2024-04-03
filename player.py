@@ -18,13 +18,21 @@ class Player(Sprite):
         self.y = float(self.rect.y)
 
         self.v = Vector()
-        self.y_velocity = self.settings.jump_height
         self.moving_right = False
         self.moving_left = False
         self.falling = True
 
         self.lasers = game.lasers
         self.continuous_fire = False
+
+    def reset_player(self):
+        self.rect.midbottom = self.screen_rect.midbottom 
+        self.rect.y -= 100
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+        self.moving_right = False
+        self.moving_left = False
+        self.falling = True
 
     def check_keydown_events(self, event):
         if self.game.isActive():
@@ -70,6 +78,10 @@ class Player(Sprite):
 
             self.y += self.v.y
             if self.continuous_fire: self.fire()
+
+            if self.y > self.settings.screen_height:
+                self.game.game_over()
+    
         self.draw()
 
 
