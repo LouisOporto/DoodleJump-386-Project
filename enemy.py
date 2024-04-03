@@ -9,6 +9,7 @@ class Dog(Sprite):
         self.game = game
         self.screen = game.screen
         self.settings = game.settings
+        
 
         self.image = pg.transform.scale(pg.image.load('images/dog_0.png'), (self.settings.image_scale, self.settings.image_scale))
         self.rect = self.image.get_rect()
@@ -23,14 +24,13 @@ class Dog(Sprite):
     
     def draw(self): self.screen.blit(self.image, self.rect)
 
-    #TODO Implement enemy dogs
-
 class Dogs:
     def __init__(self, game):
         self.game = game
         self.screen = game.screen
         self.settings = game.settings
         self.dog_group = Group()
+        self.laser_group = game.lasers.laser_group
         self.create_fleet()
 
     def create_fleet(self):
@@ -51,5 +51,9 @@ class Dogs:
     def update(self):
         for dog in self.dog_group.sprites():
             dog.update()
-        
-        pg.sprite.spritecollide(self.game.player)
+            
+        if pg.sprite.groupcollide(self.dog_group, self.laser_group, True, True):
+            #Play alien death sound
+            # Add points
+            # Prep score
+            pass

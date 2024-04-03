@@ -22,8 +22,8 @@ class Game:
         self.lasers = Lasers(self)
         self.stats = Stats(self)
         self.scoreboard = Scoreboard(self)
-        self.dogs = Dogs(self)
         self.player = Player(self)
+        self.dogs = Dogs(self)
         self.platforms = PlatformGroup(self)
 
         self.play_button = Button(game=self, text='Play')
