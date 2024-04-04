@@ -12,17 +12,26 @@ class PlatformGroup:
         self.platform_group = Group()
         self.initiate_platform()
         self.screen_rect = self.screen.get_rect()
+        self.sound = game.sound
 
     def update(self):
         player_collided = pg.sprite.spritecollide(self.player, self.platform_group, False)
         if self.player.falling:
             if len(player_collided) > 0:
-                self.player.jump()
-                self.create_succession()
-                self.game.stats.score += self.settings.platform_point
-                self.sb.platformJumped()
-                self.sb.prep_score()
-                self.sb.check_high_score()
+
+                if player_collided[0].isSpiked:
+                    self.player.image = pg.transform.scale(pg.image.load('images/cat_2.png'), (self.settings.image_scale, self.settings.image_scale))
+                    self.player.draw()
+                    self.player.isAlive = False
+                    self.sound.player_hit()
+                    player_collided[0].kill()
+                else:
+                    self.player.jump()
+                    self.create_succession()
+                    self.game.stats.score += self.settings.platform_point
+                    self.sb.platformJumped()
+                    self.sb.prep_score()
+                    self.sb.check_high_score()
 
         self.fall()
 
