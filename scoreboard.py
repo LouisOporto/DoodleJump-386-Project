@@ -18,7 +18,7 @@ class Scoreboard:
         self.platform = 0
 
     def prep_score(self):
-        rounded_score = round(self.stats.score, -1)
+        rounded_score = round(self.stats.score)
         s = f'{rounded_score:,}'
 
         self.score_image = self.font.render(s, True, self.text_color, self.settings.background_color)
@@ -27,7 +27,7 @@ class Scoreboard:
         self.score_rect.top = self.screen_rect.bottom - 50
 
     def prep_high_score(self):
-        high_score = round(self.stats.high_score, -1)
+        high_score = round(self.stats.high_score)
         high_score_str = f"High Score: {high_score:,}"
 
         self.high_score_image = self.font.render(high_score_str, True, self.text_color, self.settings.background_color)
@@ -48,7 +48,7 @@ class Scoreboard:
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
             with open('output.txt', 'w') as file:
-                file.write(str(self.stats.high_score))
+                file.write(str(round(self.stats.high_score)))
         self.prep_high_score()
 
     def check_level(self):

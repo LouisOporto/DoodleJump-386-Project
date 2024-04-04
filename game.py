@@ -67,12 +67,13 @@ class Game:
                     b.press()
 
     def game_over(self):
+        self.game_active = False
         self.sound.gameover()
         self.sound.stop_bg()
         pg.mouse.set_visible(True)
         self.play_button.change_text('Play again?')
         self.play_button.show()
-        self.game_active = False
+        
 
     def activate(self):
         self.restart_game()

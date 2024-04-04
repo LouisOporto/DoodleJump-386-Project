@@ -16,15 +16,14 @@ class PlatformGroup:
 
     def update(self):
         player_collided = pg.sprite.spritecollide(self.player, self.platform_group, False)
-        if self.player.falling:
+        if self.player.falling and self.game.game_active:
             if len(player_collided) > 0:
-
                 if player_collided[0].isSpiked:
+                    print("Cat collide")
                     self.player.image = pg.transform.scale(pg.image.load('images/cat_2.png'), (self.settings.image_scale, self.settings.image_scale))
                     self.player.draw()
                     self.player.isAlive = False
                     self.sound.player_hit()
-                    player_collided[0].kill()
                 else:
                     self.player.jump()
                     self.create_succession()
