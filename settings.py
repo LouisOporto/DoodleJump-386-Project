@@ -16,7 +16,8 @@ class Settings:
         self.laser_speed = 10
         self.laser_width = 5
         self.laser_height = 20
-        self.laser_color = (0, 255, 255)
+        self.cat_laser_color = (0, 255, 255)
+        self.dog_laser_color = (255, 0, 0)
         self.lasers_allowed = 5               #(optional) limiting the amount of lasers on screen
 
         #Player Variables
@@ -28,7 +29,7 @@ class Settings:
         self.jump_height = 25
 
         self.initialize_dynamic_settings()
-    
+
     def initialize_dynamic_settings(self):
         self.dog_spawn_rate = 500
         self.dog_shoot = 100
@@ -42,7 +43,7 @@ class Settings:
         self.platform_point *= 1.1
         self.dog_point *= 1.1
         self.next_level += 2
-        
+
 
 if __name__ == '__main__':
     print("\nERROR: settings.py is the wrong file! To play run game.py\n")

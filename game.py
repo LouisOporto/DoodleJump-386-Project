@@ -73,7 +73,7 @@ class Game:
         pg.mouse.set_visible(True)
         self.play_button.change_text('Play again?')
         self.play_button.show()
-        
+
 
     def activate(self):
         self.restart_game()

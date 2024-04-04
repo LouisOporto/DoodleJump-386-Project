@@ -9,6 +9,7 @@ class Stats:
     def reset(self):
         self.score = 0
         self.level = 1
+        self.platform = 0
 
 
 if __name__ == '__main__':

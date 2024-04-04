@@ -52,15 +52,15 @@ class Scoreboard:
         self.prep_high_score()
 
     def check_level(self):
-        if self.platform > self.settings.next_level:
+        if self.stats.platform > self.settings.next_level:
             self.settings.increase_dynamics()
             self.stats.level += 1
-            self.platform = 0
+            self.stats.platform = 0
             self.prep_level()
             self.sound.up_level()
 
     def platformJumped(self):
-        self.platform += 1
+        self.stats.platform += 1
 
     def update(self):
         self.check_level()
