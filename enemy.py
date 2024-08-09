@@ -102,6 +102,3 @@ class Dogs:
 
 if __name__ == '__main__':
     print("\nERROR: enemy.py is the wrong file! To play run game.py\n")
-
-
-# This is sample code to see a difference between version of github
