@@ -99,7 +99,7 @@ class Game:
             self.platforms.update()
             self.player.update()
             self.scoreboard.update()
-            if self.game_active:
+            if self.isActive():
                 self.dogs.update()
                 self.lasers.update()
                 self.dog_lasers.update()
@@ -107,7 +107,7 @@ class Game:
                 self.play_button.update()
                 self.screen.blit(self.text_img, self.text_rect)
             pg.display.flip()
-            time.sleep(0.02)
+            time.sleep(0.02) # Set FPS not controlled
 
 
 if __name__ == "__main__":
